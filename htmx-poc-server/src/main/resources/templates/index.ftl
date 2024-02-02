@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CQIT - Homepage</title>
+  <title>CC007 - Homepage</title>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <script src="https://unpkg.com/htmx.org@1.9.10/dist/ext/response-targets.js"></script>
+  <script src="/js/script.js"></script>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body hx-ext="response-targets">
 <div id="header">
   <div id="logo"><a href="/">${logo}</a></div>
   <div id="menu">
-      <#list menuItems as menuItem>
-        <a href="${menuItem.url}" hx-get="${menuItem.url}" hx-target="#content" hx-target-*="#content">${menuItem.name}</a>
-      </#list>
+      <#include "components/menu.ftl">
   </div>
 </div>
 <div id="content">

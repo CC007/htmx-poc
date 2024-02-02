@@ -1,26 +1,22 @@
 package com.github.cc007.htmxpocserver.controllers;
 
-import java.util.Arrays;
-import java.util.List;
-import lombok.Value;
+import com.github.cc007.htmxpocserver.services.MenuItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
+
+    private final MenuItemService menuItemService;
 
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("logo", "CC007");
         model.addAttribute("content", "Lorum ipsum dolor...");
-
-        List<MenuItem> menuItems = Arrays.asList(
-                new MenuItem("Bio", "/bio"),
-                new MenuItem("Portfolio", "/portfolio"),
-                new MenuItem("Socials", "/socials")
-        );
-        model.addAttribute("menuItems", menuItems);
+        model.addAttribute("menuItems", menuItemService.getMenuItems(null));
 
         model.addAttribute("tosUrl", "/tos");
         model.addAttribute("contactUrl", "/contact");
@@ -28,9 +24,4 @@ public class HomeController {
         return "index";
     }
 
-    @Value
-    public static class MenuItem {
-        String name;
-        String url;
-    }
 }

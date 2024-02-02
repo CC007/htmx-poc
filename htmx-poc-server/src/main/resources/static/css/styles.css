@@ -1,6 +1,6 @@
 #header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px;
   background-color: #f5f5f5;
@@ -9,11 +9,7 @@
 #logo {
   font-size: 24px;
   font-weight: bold;
-}
-
-#menu {
-  display: flex;
-  gap: 10px;
+  margin-right: 20px;
 }
 
 #content {
@@ -26,4 +22,27 @@
   position: fixed;
   width: 100%;
   bottom: 0;
+}
+
+#menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fbfcfd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#menu > a {
+  box-sizing: border-box;
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  flex-grow: 1;
+  text-align: center;
+}
+
+#menu > a.active {
+  background-color: #e3e3e3;
+  border-radius: 5px;
 }
