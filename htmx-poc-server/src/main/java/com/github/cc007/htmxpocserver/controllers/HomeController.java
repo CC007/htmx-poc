@@ -15,7 +15,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("logo", "CC007");
-        model.addAttribute("content", "Lorum ipsum dolor...");
+        model.addAttribute("content", "<p>Lorum ipsum dolor...</p>");
         model.addAttribute("menuItems", menuItemService.getMenuItems(null));
 
         model.addAttribute("tosUrl", "/tos");
