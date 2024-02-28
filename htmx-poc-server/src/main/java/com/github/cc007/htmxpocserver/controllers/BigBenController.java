@@ -36,6 +36,9 @@ public class BigBenController {
                                 .toInstant();
         int postCount = viewportHeight.map(vh -> vh / HEIGHT_PER_POST).orElse(20);
         int offset = optOffset.orElse(0);
+        if (offset > 100) {
+            postCount = 0;
+        }
 
         model.addAttribute("timestamp", time.getEpochSecond())
              .addAttribute("currentHour", time.atZone(ZoneOffset.UTC).minusHours(offset).getHour())

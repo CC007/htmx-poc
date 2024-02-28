@@ -28,4 +28,6 @@
         </div>
     </div>
 </@repeat>
+<#if postCount gt 0>
 <div hx-trigger="intersect once" hx-swap="outerHTML" hx-get="/bigben?offset=${nextOffset}&timestamp=${timestamp?c}">Load more...</div>
+</#if>

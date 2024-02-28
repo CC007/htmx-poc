@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CC007 - Homepage</title>
-Im  <script src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"></script>
   <script src="https://unpkg.com/htmx.org@1.9.10/dist/ext/response-targets.js"></script>
   <script src="/js/script.js"></script>
   <link rel="stylesheet" href="/css/styles.css">
