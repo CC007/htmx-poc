@@ -1,5 +1,6 @@
 <#include "../macros/repeat.ftl">
 <#setting time_zone="UTC">
+<p>This is an example to demonstrate dynamic loading of content</p>
 <@repeat n=postCount; postNr>
     <div class="card">
         <div class="card-body">

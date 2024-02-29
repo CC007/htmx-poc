@@ -2,6 +2,8 @@ package com.github.cc007.htmxpocserver.controllers;
 
 import com.github.cc007.htmxpocserver.model.MenuItemType;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
+import com.github.cc007.htmxpocserver.services.TemplateResolver;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,11 +23,13 @@ public class BigBenController {
     public static final int HEIGHT_PER_POST = 202;
 
     private final MenuItemService menuItemService;
+    private final TemplateResolver templateResolver;
 
     @GetMapping("/bigben")
     public String bigBen(@RequestParam Optional<Integer> viewportHeight,
                          @RequestParam("offset") Optional<Integer> optOffset,
                          @RequestParam Optional<Long> timestamp,
+                         HttpServletRequest request,
                          Model model
     ) {
         Instant time = timestamp.map(Instant::ofEpochSecond)
@@ -53,6 +57,6 @@ public class BigBenController {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
 
         log.info("returning bigben page with first ${postCount} posts");
-        return "content/bigben";
+        return templateResolver.getTemplate(request, model, "bigben");
     }
 }
