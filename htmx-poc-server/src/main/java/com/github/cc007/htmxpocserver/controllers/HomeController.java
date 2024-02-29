@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(null));
-        return templateResolver.getTemplate(request, model, "home");
+        return templateResolver.getTemplate(request, model, "home", "Homepage");
     }
 
 }

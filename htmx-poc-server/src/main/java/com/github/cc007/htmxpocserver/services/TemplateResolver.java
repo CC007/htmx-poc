@@ -10,15 +10,16 @@ import org.springframework.ui.Model;
 public class TemplateResolver {;
     private final HtmxService htmxService;
 
-    public String getTemplate(HttpServletRequest request, Model model, String templateName) {
+    public String getTemplate(HttpServletRequest request, Model model, String templateName, String title) {
+        model.addAttribute("contentTemplate", "components/" + templateName);
+        model.addAttribute("title", title);
         if (htmxService.isHtmxRequest(request)) {
-            return "content/" + templateName;
+            return "content";
         } else {
-            model.addAttribute("contentTemplate", "components/" + templateName);
             model.addAttribute("logo", "CC007");
             model.addAttribute("tosUrl", "/tos");
             model.addAttribute("contactUrl", "/contact");
-            return "index";
+            return "page";
         }
     }
 

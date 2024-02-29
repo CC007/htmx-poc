@@ -57,6 +57,6 @@ public class BigBenController {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
 
         log.info("returning bigben page with first ${postCount} posts");
-        return templateResolver.getTemplate(request, model, "bigben");
+        return templateResolver.getTemplate(request, model, "bigben", "Big Ben example");
     }
 }

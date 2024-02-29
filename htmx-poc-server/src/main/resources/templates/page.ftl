@@ -19,7 +19,7 @@
     <#include contentTemplate + ".ftl">
 </div>
 <div id="footer">
-  <a href="${tosUrl}" hx-get="${tosUrl}" hx-target="#content" hx-target-*="#content" hx-push-url="true">Terms of Service</a> | <a href="${contactUrl}" hx-get="${contactUrl}" hx-target="#content" hx-target-*="#content" hx-push-url="true">Contact</a>
+  <a href="${tosUrl}" hx-get="${tosUrl}" hx-target="#content" hx-target-*="#content" hx-push-url="true">Terms of Service</a> | <a href="${contactUrl}" hx-get="${contactUrl}" hx-target="#content" hx-target-*="#content" hx-push-url="true">Contact</a> | <a href="/trigger-error" hx-get="/trigger-error" hx-target="#content" hx-target-*="#content" hx-push-url="true">Trigger error</a>
 </div>
 </body>
 </html>

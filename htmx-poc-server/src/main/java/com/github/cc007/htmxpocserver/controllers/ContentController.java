@@ -19,18 +19,28 @@ public class ContentController {
     @GetMapping("/bio")
     public String bio(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.BIO));
-        return templateResolver.getTemplate(request, model, "bio");
+        return templateResolver.getTemplate(request, model, "bio", "Bio");
     }
 
     @GetMapping("/portfolio")
     public String portfolio(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
-        return templateResolver.getTemplate(request, model, "portfolio");
+        return templateResolver.getTemplate(request, model, "portfolio", "Portfolio");
     }
 
     @GetMapping("/socials")
     public String socials(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.SOCIALS));
-        return templateResolver.getTemplate(request, model, "socials");
+        return templateResolver.getTemplate(request, model, "socials", "Socials");
+    }
+
+    @GetMapping("/trigger-error")
+    public String triggerError(HttpServletRequest request, Model model) {
+        class ThisIsFine extends RuntimeException {
+            public ThisIsFine(String message) {
+                super(message);
+            }
+        }
+        throw new ThisIsFine("Test the error page");
     }
 }
