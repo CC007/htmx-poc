@@ -11,14 +11,13 @@ public class TemplateResolver {;
     private final HtmxService htmxService;
 
     public String getTemplate(HttpServletRequest request, Model model, String templateName, String title) {
-        model.addAttribute("contentTemplate", "components/" + templateName);
+        model.addAttribute("contentTemplate", templateName);
         model.addAttribute("title", title);
+
         if (htmxService.isHtmxRequest(request)) {
             return "content";
         } else {
             model.addAttribute("logo", "CC007");
-            model.addAttribute("tosUrl", "/tos");
-            model.addAttribute("contactUrl", "/contact");
             return "page";
         }
     }
