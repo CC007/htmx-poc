@@ -51,7 +51,6 @@ public class BigBenController {
 
         if (optOffset.isPresent()) {
             log.info("Found offset of ${offset}, returning ${postCount} bigben posts");
-            return "components/bigben";
         }
 
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));

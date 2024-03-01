@@ -1,3 +1,4 @@
+<#include "macros/url.ftl">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body hx-ext="response-targets">
 <div id="header">
-  <div id="logo"><a href="/" hx-get="/" hx-target="#content" hx-target-*="#content" hx-push-url="true"><img src="/images/logo.png" alt="${logo}"></a></div>
+  <div id="logo"><@a href="/"><img src="/images/logo.png" alt="${logo}"></@a></div>
   <div id="menu">
       <#include "components/menu.ftl">
   </div>
@@ -19,7 +20,7 @@
     <#include "content/" + contentTemplate + ".ftl">
 </div>
 <div id="footer">
-  <a href="/tos" hx-get="/tos" hx-target="#content" hx-target-*="#content" hx-push-url="true">Terms of Service</a> | <a href="/contact" hx-get="/contact" hx-target="#content" hx-target-*="#content" hx-push-url="true">Contact</a> | <a href="/trigger-error" hx-get="/trigger-error" hx-target="#content" hx-target-*="#content" hx-push-url="true">Trigger error</a>
+  <@a href="/tos">Terms of Service</@a> | <@a href="/contact">Contact</@a> | <@a href="/trigger-error">Trigger error</@a>
 </div>
 </body>
 </html>
