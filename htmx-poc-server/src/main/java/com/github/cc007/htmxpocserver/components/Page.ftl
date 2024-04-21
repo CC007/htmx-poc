@@ -13,11 +13,11 @@
 <div id="header">
   <div id="logo"><@a href="/"><img src="/images/logo.png" alt="${logo}"></@a></div>
   <div id="menu">
-      <#include "components/menu.ftl">
+      <#include "header/Menu.ftl">
   </div>
 </div>
 <div id="content">
-    <#include "content/" + contentTemplate + ".ftl">
+    <#include contentTemplateFileName>
 </div>
 <div id="footer">
   <@a href="/tos">Terms of Service</@a> | <@a href="/contact">Contact</@a> | <@a href="/trigger-error">Trigger error</@a>

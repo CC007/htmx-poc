@@ -13,7 +13,7 @@ public class ComponentTest {
         DummyComponent dummyComponent = new DummyComponent();
 
         // execute
-        String actual = dummyComponent.getTemplateFileName();
+        String actual = dummyComponent.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
@@ -26,7 +26,7 @@ public class ComponentTest {
         DummyContentComponent dummyContentComponent = new DummyContentComponent();
 
         // execute
-        String actual = dummyContentComponent.getTemplateFileName();
+        String actual = dummyContentComponent.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
@@ -39,7 +39,7 @@ public class ComponentTest {
         DummyComponentWithoutTemplate dummyComponentWithoutTemplate = new DummyComponentWithoutTemplate();
 
         // execute
-        String actual = dummyComponentWithoutTemplate.getTemplateFileName();
+        String actual = dummyComponentWithoutTemplate.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
@@ -52,7 +52,7 @@ public class ComponentTest {
         DummyComponent dummyComponent = new DummyComponent();
 
         // execute
-        String actual = dummyComponent.getTemplateName();
+        String actual = dummyComponent.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
@@ -65,7 +65,7 @@ public class ComponentTest {
         DummyContentComponent dummyContentComponent = new DummyContentComponent();
 
         // execute
-        String actual = dummyContentComponent.getTemplateName();
+        String actual = dummyContentComponent.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
@@ -78,7 +78,7 @@ public class ComponentTest {
         DummyComponentWithoutTemplate dummyComponentWithoutTemplate = new DummyComponentWithoutTemplate();
 
         // execute
-        String actual = dummyComponentWithoutTemplate.getTemplateName();
+        String actual = dummyComponentWithoutTemplate.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
