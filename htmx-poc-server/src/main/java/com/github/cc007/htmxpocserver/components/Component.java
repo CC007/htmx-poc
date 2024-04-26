@@ -1,31 +1,32 @@
 package com.github.cc007.htmxpocserver.components;
 
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.SneakyThrows;
+import org.springframework.ui.Model;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
-import lombok.SneakyThrows;
 
 public interface Component {
 
-    String COMPONENT_TEMPLATE_PREFIX = "com/github/cc007/htmxpocserver/components";
+    default String getTemplateName() {
+        String templateFileName = getTemplateFileName(null, null);
+        return templateFileName.substring(0, templateFileName.length() - 4);
+    }
 
-    default String getTemplateFileName() {
+    default String getTemplateFileName(HttpServletRequest request, Model model) {
         URI baseUri = getBaseUri();
         String templateFileName = this.getClass().getSimpleName() + ".ftl";
         return getResource(templateFileName)
                 .map(baseUri::relativize)
                 .map(URI::getPath)
-                .orElse(COMPONENT_TEMPLATE_PREFIX + "/error/500.ftl");
-    }
-
-    default String getTemplateName() {
-        String templateFileName = getTemplateFileName();
-        return templateFileName.substring(0, templateFileName.length() - 4);
+                .orElse("error/Status500.ftl");
     }
 
     private URI getBaseUri() {
-        return Optional.ofNullable(getClass().getClassLoader().getResource(""))
+        return Optional.ofNullable(Component.class.getResource(""))
                 .map(Component::getUri)
                 .orElseThrow();
     }

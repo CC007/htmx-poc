@@ -1,9 +1,9 @@
 package com.github.cc007.htmxpocserver.components;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.cc007.htmxpocserver.components.content.DummyContentComponent;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComponentTest {
 
@@ -13,11 +13,11 @@ public class ComponentTest {
         DummyComponent dummyComponent = new DummyComponent();
 
         // execute
-        String actual = dummyComponent.getTemplateFileName();
+        String actual = dummyComponent.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/DummyComponent.ftl");
+                .isEqualTo("DummyComponent.ftl");
     }
 
     @Test
@@ -26,11 +26,11 @@ public class ComponentTest {
         DummyContentComponent dummyContentComponent = new DummyContentComponent();
 
         // execute
-        String actual = dummyContentComponent.getTemplateFileName();
+        String actual = dummyContentComponent.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/content/DummyContentComponent.ftl");
+                .isEqualTo("content/DummyContentComponent.ftl");
     }
 
     @Test
@@ -39,11 +39,11 @@ public class ComponentTest {
         DummyComponentWithoutTemplate dummyComponentWithoutTemplate = new DummyComponentWithoutTemplate();
 
         // execute
-        String actual = dummyComponentWithoutTemplate.getTemplateFileName();
+        String actual = dummyComponentWithoutTemplate.getTemplateFileName(null, null);
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/error/500.ftl");
+                .isEqualTo("error/Status500.ftl");
     }
 
     @Test
@@ -56,7 +56,7 @@ public class ComponentTest {
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/DummyComponent");
+                .isEqualTo("DummyComponent");
     }
 
     @Test
@@ -69,7 +69,7 @@ public class ComponentTest {
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/content/DummyContentComponent");
+                .isEqualTo("content/DummyContentComponent");
     }
 
     @Test
@@ -82,6 +82,6 @@ public class ComponentTest {
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/error/500");
+                .isEqualTo("error/Status500");
     }
 }
