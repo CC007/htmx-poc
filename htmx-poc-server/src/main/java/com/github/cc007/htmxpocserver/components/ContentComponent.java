@@ -1,8 +1,5 @@
-package com.github.cc007.htmxpocserver.components.content;
+package com.github.cc007.htmxpocserver.components;
 
-import com.github.cc007.htmxpocserver.components.Component;
-import com.github.cc007.htmxpocserver.components.Htmx;
-import com.github.cc007.htmxpocserver.components.Page;
 import com.github.cc007.htmxpocserver.services.HtmxService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;

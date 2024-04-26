@@ -1,4 +1,3 @@
-<#include "macros/url.ftl">
 <!DOCTYPE html>
 <html lang="en">
 <head>

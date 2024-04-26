@@ -1,7 +1,8 @@
 package com.github.cc007.htmxpocserver.controllers;
 
+import com.github.cc007.htmxpocserver.components.content.error.Status404;
+import com.github.cc007.htmxpocserver.components.content.error.Status500;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
-import com.github.cc007.htmxpocserver.services.TemplateResolver;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,8 @@ import java.util.Optional;
 public class CustomErrorController implements ErrorController {
 
     private final MenuItemService menuItemService;
-    private final TemplateResolver templateResolver;
+    private final Status404 status404;
+    private final Status500 status500;
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
@@ -31,22 +33,13 @@ public class CustomErrorController implements ErrorController {
                 .map(Integer::parseInt)
                 .map(HttpStatus::resolve)
                 .orElse(HttpStatus.INTERNAL_SERVER_ERROR);
-        String contentTemplate = getContentTemplate(httpStatus);
-        String title = getTitle(httpStatus);
-        return templateResolver.getTemplate(request, model, contentTemplate, title);
+        return getContentTemplate(httpStatus, request, model);
     }
 
-    private String getContentTemplate(HttpStatus httpStatus) {
+    private String getContentTemplate(HttpStatus httpStatus, HttpServletRequest request, Model model) {
         return switch (httpStatus) {
-            case NOT_FOUND -> "error-404";
-            default -> "error";
-        };
-    }
-
-    private String getTitle(HttpStatus httpStatus) {
-        return switch (httpStatus) {
-            case NOT_FOUND -> "Not found";
-            default -> "Error";
+            case NOT_FOUND -> status404.getTemplateName(request, model);
+            default -> status500.getTemplateName(request, model);
         };
     }
 }

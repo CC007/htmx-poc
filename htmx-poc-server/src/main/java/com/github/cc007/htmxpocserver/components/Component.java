@@ -1,29 +1,34 @@
 package com.github.cc007.htmxpocserver.components;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.SneakyThrows;
+import org.slf4j.Logger;
+import org.springframework.ui.Model;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
-import lombok.SneakyThrows;
-import org.springframework.ui.Model;
 
 public interface Component {
+    Logger log = org.slf4j.LoggerFactory.getLogger(Component.class);
 
-    String COMPONENT_TEMPLATE_PREFIX = "com/github/cc007/htmxpocserver/components";
+    String COMPONENT_TEMPLATE_PREFIX = "/com/github/cc007/htmxpocserver/components";
 
     default String getTemplateName(HttpServletRequest request, Model model) {
-        String templateFileName = getTemplateFileName(null, null);
-        return templateFileName.substring(0, templateFileName.length() - 4);
+        String templateFileName = getTemplateFileName(request, model);
+        return templateFileName.substring("/".length(), templateFileName.length() - ".ftl".length());
     }
 
     default String getTemplateFileName(HttpServletRequest request, Model model) {
         URI baseUri = getBaseUri();
         String templateFileName = this.getClass().getSimpleName() + ".ftl";
-        return getResource(templateFileName)
+        String canonicalFileName = getResource(templateFileName)
                 .map(baseUri::relativize)
                 .map(URI::getPath)
-                .orElse(COMPONENT_TEMPLATE_PREFIX + "/error/500.ftl");
+                .orElse(COMPONENT_TEMPLATE_PREFIX + "content/error/Status500.ftl");
+        log.info("Template name: /$canonicalFileName");
+        return "/$canonicalFileName";
     }
 
     private URI getBaseUri() {

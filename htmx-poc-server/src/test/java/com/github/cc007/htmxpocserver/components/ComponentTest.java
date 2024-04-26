@@ -1,9 +1,9 @@
 package com.github.cc007.htmxpocserver.components;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.cc007.htmxpocserver.components.content.DummyContentComponent;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComponentTest {
 
@@ -43,7 +43,7 @@ public class ComponentTest {
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/error/500.ftl");
+                .isEqualTo("com/github/cc007/htmxpocserver/components/error/Status500.ftl");
     }
 
     @Test
@@ -82,6 +82,6 @@ public class ComponentTest {
 
         // verify
         assertThat(actual)
-                .isEqualTo("com/github/cc007/htmxpocserver/components/error/500");
+                .isEqualTo("com/github/cc007/htmxpocserver/components/error/Status500");
     }
 }
