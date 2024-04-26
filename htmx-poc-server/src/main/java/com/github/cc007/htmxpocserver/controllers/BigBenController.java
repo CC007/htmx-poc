@@ -50,13 +50,14 @@ public class BigBenController {
              .addAttribute("postCount", postCount)
              .addAttribute("showDescription", offset == 0);
 
+        model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
         if (optOffset.isPresent()) {
             log.info("Found offset of ${offset}, returning ${postCount} bigben posts");
+        } else {
+            log.info("returning bigben page with first ${postCount} posts");
         }
 
-        model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
 
-        log.info("returning bigben page with first ${postCount} posts");
-        return templateResolver.getTemplate(request, model, "bigben", "Big Ben example");
+        return templateResolver.getTemplate(request, model, "Bigben", "Big Ben example");
     }
 }

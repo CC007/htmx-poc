@@ -15,10 +15,10 @@ public class TemplateResolver {;
         model.addAttribute("title", title);
 
         if (htmxService.isHtmxRequest(request)) {
-            return "content";
+            return "Htmx";
         } else {
             model.addAttribute("logo", "CC007");
-            return "page";
+            return "Page";
         }
     }
 

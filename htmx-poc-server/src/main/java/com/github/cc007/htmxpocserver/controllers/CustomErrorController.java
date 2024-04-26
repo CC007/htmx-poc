@@ -38,8 +38,8 @@ public class CustomErrorController implements ErrorController {
 
     private String getContentTemplate(HttpStatus httpStatus) {
         return switch (httpStatus) {
-            case NOT_FOUND -> "error-404";
-            default -> "error";
+            case NOT_FOUND -> "Status404";
+            default -> "Status500";
         };
     }
 

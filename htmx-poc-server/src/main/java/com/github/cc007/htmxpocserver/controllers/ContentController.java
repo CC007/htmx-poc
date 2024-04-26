@@ -19,19 +19,19 @@ public class ContentController {
     @GetMapping("/bio")
     public String bio(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.BIO));
-        return templateResolver.getTemplate(request, model, "bio", "Bio");
+        return templateResolver.getTemplate(request, model, "Bio", "Bio");
     }
 
     @GetMapping("/portfolio")
     public String portfolio(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
-        return templateResolver.getTemplate(request, model, "portfolio", "Portfolio");
+        return templateResolver.getTemplate(request, model, "Portfolio", "Portfolio");
     }
 
     @GetMapping("/socials")
     public String socials(HttpServletRequest request, Model model) {
         model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.SOCIALS));
-        return templateResolver.getTemplate(request, model, "socials", "Socials");
+        return templateResolver.getTemplate(request, model, "Socials", "Socials");
     }
 
     @GetMapping("/trigger-error")
