@@ -13,7 +13,7 @@
 <div id="header">
   <div id="logo"><@a href="/"><img src="/images/logo.png" alt="${logo}"></@a></div>
   <div id="menu">
-      <#include "components/menu.ftl">
+      <#include "header/menu.ftl">
   </div>
 </div>
 <div id="content">

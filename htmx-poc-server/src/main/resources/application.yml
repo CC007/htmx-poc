@@ -1,5 +1,5 @@
 spring:
   freemarker:
-    template-loader-path: classpath:/templates
+    template-loader-path: classpath:/com/github/cc007/htmxpocserver/components
     suffix: .ftl
     cache: false
