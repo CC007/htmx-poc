@@ -11,18 +11,22 @@ import java.util.Optional;
 
 public interface Component {
 
-    default String getTemplateName() {
-        String templateFileName = getTemplateFileName(null, null);
-        return templateFileName.substring(0, templateFileName.length() - 4);
+    String EXTENSION = ".ftl";
+
+    String getClassName();
+
+    default String getTemplateName(HttpServletRequest request, Model model) {
+        String templateFileName = getTemplateFileName();
+        return templateFileName.substring(0, templateFileName.length() - EXTENSION.length());
     }
 
-    default String getTemplateFileName(HttpServletRequest request, Model model) {
+    private String getTemplateFileName() {
         URI baseUri = getBaseUri();
-        String templateFileName = this.getClass().getSimpleName() + ".ftl";
+        String templateFileName = getClassName() + EXTENSION;
         return getResource(templateFileName)
                 .map(baseUri::relativize)
                 .map(URI::getPath)
-                .orElse("error/Status500.ftl");
+                .orElse("content/error/Status500.ftl");
     }
 
     private URI getBaseUri() {

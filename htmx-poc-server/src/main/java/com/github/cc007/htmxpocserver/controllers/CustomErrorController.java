@@ -1,5 +1,6 @@
 package com.github.cc007.htmxpocserver.controllers;
 
+import com.github.cc007.htmxpocserver.components.content.error.ErrorFactory;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
 import com.github.cc007.htmxpocserver.services.TemplateResolver;
 import jakarta.servlet.RequestDispatcher;
@@ -19,6 +20,7 @@ public class CustomErrorController implements ErrorController {
 
     private final MenuItemService menuItemService;
     private final TemplateResolver templateResolver;
+    private final ErrorFactory errorFactory;
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
@@ -31,22 +33,7 @@ public class CustomErrorController implements ErrorController {
                 .map(Integer::parseInt)
                 .map(HttpStatus::resolve)
                 .orElse(HttpStatus.INTERNAL_SERVER_ERROR);
-        String contentTemplate = getContentTemplate(httpStatus);
-        String title = getTitle(httpStatus);
-        return templateResolver.getTemplate(request, model, contentTemplate, title);
-    }
 
-    private String getContentTemplate(HttpStatus httpStatus) {
-        return switch (httpStatus) {
-            case NOT_FOUND -> "error/Status404";
-            default -> "error/Status500";
-        };
-    }
-
-    private String getTitle(HttpStatus httpStatus) {
-        return switch (httpStatus) {
-            case NOT_FOUND -> "Not found";
-            default -> "Error";
-        };
+        return errorFactory.create(httpStatus).getTemplateName(request, model);
     }
 }

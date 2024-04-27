@@ -1,5 +1,8 @@
 package com.github.cc007.htmxpocserver.components;
 
-public class DummyComponent implements Component {
+import lombok.Getter;
 
+@Getter
+public class DummyComponent implements Component {
+    private final String className = this.getClass().getSimpleName();
 }

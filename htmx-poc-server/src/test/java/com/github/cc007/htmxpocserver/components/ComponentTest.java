@@ -5,46 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ComponentTest {
-
-    @Test
-    void getTemplateFileName_without_subpackage() {
-        // prepare
-        DummyComponent dummyComponent = new DummyComponent();
-
-        // execute
-        String actual = dummyComponent.getTemplateFileName(null, null);
-
-        // verify
-        assertThat(actual)
-                .isEqualTo("DummyComponent.ftl");
-    }
-
-    @Test
-    void getTemplateFileName_with_subpackage() {
-        // prepare
-        DummyContentComponent dummyContentComponent = new DummyContentComponent();
-
-        // execute
-        String actual = dummyContentComponent.getTemplateFileName(null, null);
-
-        // verify
-        assertThat(actual)
-                .isEqualTo("content/DummyContentComponent.ftl");
-    }
-
-    @Test
-    void getTemplateFileName_templateNotFound() {
-        // prepare
-        DummyComponentWithoutTemplate dummyComponentWithoutTemplate = new DummyComponentWithoutTemplate();
-
-        // execute
-        String actual = dummyComponentWithoutTemplate.getTemplateFileName(null, null);
-
-        // verify
-        assertThat(actual)
-                .isEqualTo("error/Status500.ftl");
-    }
+class ComponentTest {
 
     @Test
     void getTemplateName_without_subpackage() {
@@ -52,7 +13,7 @@ public class ComponentTest {
         DummyComponent dummyComponent = new DummyComponent();
 
         // execute
-        String actual = dummyComponent.getTemplateName();
+        String actual = dummyComponent.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
@@ -65,7 +26,7 @@ public class ComponentTest {
         DummyContentComponent dummyContentComponent = new DummyContentComponent();
 
         // execute
-        String actual = dummyContentComponent.getTemplateName();
+        String actual = dummyContentComponent.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
@@ -78,10 +39,10 @@ public class ComponentTest {
         DummyComponentWithoutTemplate dummyComponentWithoutTemplate = new DummyComponentWithoutTemplate();
 
         // execute
-        String actual = dummyComponentWithoutTemplate.getTemplateName();
+        String actual = dummyComponentWithoutTemplate.getTemplateName(null, null);
 
         // verify
         assertThat(actual)
-                .isEqualTo("error/Status500");
+                .isEqualTo("content/error/Status500");
     }
 }

@@ -2,4 +2,4 @@
 <div id="menu" hx-swap-oob="true">
     <#include "header/menu.ftl">
 </div>
-<#include "content/" + contentTemplate + ".ftl">
+<#include contentTemplate + ".ftl">

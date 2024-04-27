@@ -1,8 +1,8 @@
 package com.github.cc007.htmxpocserver.controllers;
 
+import com.github.cc007.htmxpocserver.components.content.Bigben;
 import com.github.cc007.htmxpocserver.model.MenuItemType;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
-import com.github.cc007.htmxpocserver.services.TemplateResolver;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class BigBenController {
     public static final int HEIGHT_PER_POST = 202;
 
     private final MenuItemService menuItemService;
-    private final TemplateResolver templateResolver;
+    private final Bigben bigben;
 
     @GetMapping("/bigben")
     public String bigBen(@RequestParam Optional<Integer> viewportHeight,
@@ -58,6 +58,6 @@ public class BigBenController {
         }
 
 
-        return templateResolver.getTemplate(request, model, "Bigben", "Big Ben example");
+        return bigben.getTemplateName(request, model);
     }
 }

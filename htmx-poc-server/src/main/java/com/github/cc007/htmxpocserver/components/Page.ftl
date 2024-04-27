@@ -17,7 +17,7 @@
   </div>
 </div>
 <div id="content">
-    <#include "content/" + contentTemplate + ".ftl">
+    <#include contentTemplate + ".ftl">
 </div>
 <div id="footer">
   <@a href="/tos">Terms of Service</@a> | <@a href="/contact">Contact</@a> | <@a href="/trigger-error">Trigger error</@a>
