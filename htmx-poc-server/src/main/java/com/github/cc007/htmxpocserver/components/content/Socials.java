@@ -10,7 +10,7 @@ import lombok.experimental.Delegate;
 public class Socials implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Socials(ContentFactory contentFactory) {
         content = contentFactory.create("Socials", this.getClass().getSimpleName());

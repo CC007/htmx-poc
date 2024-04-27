@@ -2,7 +2,6 @@ package com.github.cc007.htmxpocserver.controllers;
 
 import com.github.cc007.htmxpocserver.components.content.error.ErrorFactory;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
-import com.github.cc007.htmxpocserver.services.TemplateResolver;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,6 @@ import java.util.Optional;
 public class CustomErrorController implements ErrorController {
 
     private final MenuItemService menuItemService;
-    private final TemplateResolver templateResolver;
     private final ErrorFactory errorFactory;
 
     @RequestMapping("/error")

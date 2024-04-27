@@ -1,3 +1,8 @@
+<#-- @ftlvariable name="showDescription" type="java.lang.Boolean" -->
+<#-- @ftlvariable name="postCount" type="java.lang.Integer" -->
+<#-- @ftlvariable name="timestamp" type="java.lang.Long" -->
+<#-- @ftlvariable name="nextOffset" type="java.lang.Integer" -->
+<#-- @ftlvariable name="currentHour" type="java.lang.Integer" -->
 <#include "../macros/repeat.ftl">
 <#setting time_zone="UTC">
 <#if showDescription>

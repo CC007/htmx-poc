@@ -10,7 +10,7 @@ import lombok.experimental.Delegate;
 public class Home implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Home(ContentFactory contentFactory) {
         content = contentFactory.create("Homepage", this.getClass().getSimpleName());

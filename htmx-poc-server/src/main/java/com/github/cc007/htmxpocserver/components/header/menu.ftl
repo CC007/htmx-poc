@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="menuItem" type="com.github.cc007.htmxpocserver.model.MenuItem" -->
+<#-- @ftlvariable name="menuItems" type="java.util.List<com.github.cc007.htmxpocserver.model.MenuItem>" -->
 <#include "../macros/url.ftl">
 <#list menuItems as menuItem>
   <#assign activeParam=(menuItem.active?? && menuItem.active)?then(' class="active"','') >

@@ -10,7 +10,7 @@ import lombok.experimental.Delegate;
 public class Portfolio implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Portfolio(ContentFactory contentFactory) {
         content = contentFactory.create("Portfolio", this.getClass().getSimpleName());

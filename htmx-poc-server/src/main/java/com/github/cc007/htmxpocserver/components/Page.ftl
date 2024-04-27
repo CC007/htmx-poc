@@ -1,3 +1,6 @@
+<#-- @ftlvariable name="title" type="java.lang.String" -->
+<#-- @ftlvariable name="contentTemplate" type="java.lang.String" -->
+<#-- @ftlvariable name="logo" type="java.lang.String" -->
 <#include "macros/url.ftl">
 <!DOCTYPE html>
 <html lang="en">

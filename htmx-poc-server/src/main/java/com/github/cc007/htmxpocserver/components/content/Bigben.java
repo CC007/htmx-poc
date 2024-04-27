@@ -10,7 +10,7 @@ import lombok.experimental.Delegate;
 public class Bigben implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Bigben(ContentFactory contentFactory) {
         content = contentFactory.create("Big Ben example", this.getClass().getSimpleName());

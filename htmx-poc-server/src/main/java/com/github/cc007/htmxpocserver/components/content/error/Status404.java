@@ -11,7 +11,7 @@ import lombok.experimental.Delegate;
 public class Status404 implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Status404(ContentFactory contentFactory) {
         content = contentFactory.create("Not found", "error/${this.getClass().getSimpleName()}");

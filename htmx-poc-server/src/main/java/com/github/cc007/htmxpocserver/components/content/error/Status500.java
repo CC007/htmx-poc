@@ -11,7 +11,7 @@ import lombok.experimental.Delegate;
 public class Status500 implements Component {
 
     @Delegate
-    private ContentFactory.Content content;
+    private final ContentFactory.Content content;
 
     public Status500(ContentFactory contentFactory) {
         content = contentFactory.create("Error", "error/${this.getClass().getSimpleName()}");

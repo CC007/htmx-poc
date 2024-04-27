@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class ContentController {
 
+    public static final String MENU_ITEMS_KEY = "menuItems";
+
     private final MenuItemService menuItemService;
     private final Bio bio;
     private final Portfolio portfolio;
@@ -22,24 +24,24 @@ public class ContentController {
 
     @GetMapping("/bio")
     public String bio(HttpServletRequest request, Model model) {
-        model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.BIO));
+        model.addAttribute(MENU_ITEMS_KEY, menuItemService.getMenuItems(MenuItemType.BIO));
         return bio.getTemplateName(request, model);
     }
 
     @GetMapping("/portfolio")
     public String portfolio(HttpServletRequest request, Model model) {
-        model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
+        model.addAttribute(MENU_ITEMS_KEY, menuItemService.getMenuItems(MenuItemType.PORTFOLIO));
         return portfolio.getTemplateName(request, model);
     }
 
     @GetMapping("/socials")
     public String socials(HttpServletRequest request, Model model) {
-        model.addAttribute("menuItems", menuItemService.getMenuItems(MenuItemType.SOCIALS));
+        model.addAttribute(MENU_ITEMS_KEY, menuItemService.getMenuItems(MenuItemType.SOCIALS));
         return socials.getTemplateName(request, model);
     }
 
     @GetMapping("/trigger-error")
-    public String triggerError(HttpServletRequest request, Model model) {
+    public String triggerError() {
         class ThisIsFine extends RuntimeException {
             public ThisIsFine(String message) {
                 super(message);
