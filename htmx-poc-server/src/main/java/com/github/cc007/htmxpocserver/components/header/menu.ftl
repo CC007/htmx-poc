@@ -2,5 +2,5 @@
 <#include "../macros/url.ftl">
 <#list menuItems as menuItem>
   <#assign activeParam=(menuItem.active?? && menuItem.active)?then(' class="active"','') >
-  <@a href="${menuItem.url}" otherParams=activeParam>${menuItem.name}</@a>
+  <@a href="${menuItem.url}" otherParams=(activeParam + ' preload="mouseover"')>${menuItem.name}</@a>
 </#list>

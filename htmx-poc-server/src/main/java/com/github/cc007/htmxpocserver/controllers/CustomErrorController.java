@@ -4,6 +4,7 @@ import com.github.cc007.htmxpocserver.components.content.error.ErrorFactory;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,9 @@ public class CustomErrorController implements ErrorController {
     private final ErrorFactory errorFactory;
 
     @RequestMapping("/error")
-    public String handleError(HttpServletRequest request, Model model) {
+    public String handleError(HttpServletRequest request, HttpServletResponse response,  Model model) {
+        response.setHeader("Cache-Control", "max-age=60, stale-while-revalidate=600");
+        response.setHeader("Vary", "HX-Request");
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         model.addAttribute("menuItems", menuItemService.getMenuItems(null));
 

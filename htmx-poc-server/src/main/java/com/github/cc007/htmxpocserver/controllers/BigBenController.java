@@ -4,6 +4,7 @@ import com.github.cc007.htmxpocserver.components.content.Bigben;
 import com.github.cc007.htmxpocserver.model.MenuItemType;
 import com.github.cc007.htmxpocserver.services.MenuItemService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,11 @@ public class BigBenController {
                          @RequestParam("offset") Optional<Integer> optOffset,
                          @RequestParam Optional<Long> timestamp,
                          HttpServletRequest request,
+                         HttpServletResponse response,
                          Model model
     ) {
+        response.setHeader("Cache-Control", "max-age=60, stale-while-revalidate=600");
+        response.setHeader("Vary", "HX-Request");
         Instant time = timestamp.map(Instant::ofEpochSecond)
                                 .orElse(Instant.now())
                                 .atZone(ZoneOffset.UTC)
@@ -56,7 +60,6 @@ public class BigBenController {
         } else {
             log.info("returning bigben page with first ${postCount} posts");
         }
-
 
         return bigben.getTemplateName(request, model);
     }
