@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
 public class ArtificialDelayFilter implements Filter {
 
     @Override
-    @SneakyThrows(InterruptedException.class)
+//    @SneakyThrows(InterruptedException.class)
     public void doFilter(
             ServletRequest servletRequest,
             ServletResponse servletResponse,
             FilterChain filterChain
     ) throws IOException, ServletException {
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

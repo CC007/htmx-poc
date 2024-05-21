@@ -7,37 +7,12 @@
 }
 
 body {
-    height: calc(100vh - 2*var(--body-margin));
+    height: 100dvh;
     margin: var(--body-margin);
 
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-}
-
-#header {
-    background-color: #f5f5f5;
-    padding: 5px 10px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#content {
-    padding: 20px;
-
-    flex-grow: 1;
-    overflow-y: auto;
-}
-
-#footer {
-    background-color: #f5f5f5;
-    padding: 5px 10px;
-
-    flex-shrink: 0;
 }
 
 
